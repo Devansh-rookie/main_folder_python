@@ -1,6 +1,5 @@
 import datetime
 
-# classes nomenclature usually states that the first letter is capitalized
 class Employee:
     num_of_emp= 0
     raise_amount= 1.04
@@ -59,74 +58,98 @@ class Employee:
             return False
         return True
 
-emp1 = Employee("Bill", "Gates", 100000)
 
-emp2 = Employee("Steve", "Jobs", 100000)
-emp3 = emp1 # same pointing if change in emp1 then it would reflect in emp3 
+# here the class developer is inheriting all the methods and functionalities from the class Employee just put the class from which you want to inherit from in the bracket then use it as a normal class
 
-# emp3 is not initialized so num_of_emp+=1 would not be done
+class Developer(Employee):
+    raise_amount = 1.10
+    # this will only affect the developer subclass and not any other instance of the Employee class whatsoever and the data resolution order is 1. developer then Employee then bulletins.object its basically re writing anything we want like the raise_amount here is rewritten here for the developer class.
+    
+    # if we want to handle more parameters then we already have for the super class we can just use super() or the class names init method then write a new init method for the subclass
 
-print(emp1,emp2,emp3)
+    def __init__(self, fname, lname, pay, prog_lang):
+        # this is one way of doing it 
+        super().__init__(fname, lname, pay) 
+        # this will basically run the Employee class' __init__ method and then the control would come back here
+
+        # another is to write the entire thing
+
+        # Employee.__init__(self, fname, lname, pay)
+
+        #now we can just add normal stuff in the thing
+        self.prog_lang = prog_lang
+
+class Manager(Employee):
+    # we usually don't put mutable datatypes as default value
+    # here employee is a list which contains objects of Manager and Developer class
+    def __init__(self, fname, lname, pay, employee= None):
+        super().__init__(fname, lname, pay) # first it will call the Employee class' __init__ method then it will go on to the rest of the manager class' __init__ method.
+        # with None always "is" is used instead of == i.e. equality operator
+        if employee is None:
+            self.employee= []
+        else:
+            self.employee = employee
+    
+    def add_emp(self, emp):
+        if emp not in self.employee:
+            self.employee.append(emp)
+    
+    def remove_emp(self, emp):
+        if emp in self.employee:
+            self.employee.remove(emp) # .remove(val) removes the first occurrence of the val
+    
+    def print_emp(self):
+        for emp in self.employee:
+            print("-->",emp.fullname())
+
+
+dev_1= Developer("ABC", "123", 100000, "Python")
+dev_2 = Developer("Test", "Employee", 100000, prog_lang="C++")
+
+print(dev_1.email)
+print(dev_2.email)
 
 print("\n")
-print(Employee.num_of_emp) # incremented 2 times by now
-print("\n")
 
+# print(help(developer))
 
-# print(emp1.fullname(),"\n", emp1.email,sep="")
-print(emp1.fullname(), emp1.email,sep="\n")
-# emp4= Employee.__init__("Yes", "No", 100000)
-
-emp4 = Employee("Yes", "Yes", 100000)
-
-print(Employee.fullname(emp4),"\n", emp4.email,sep="")
-
-print(emp1.__dict__)
-print("Employee.__dict__",'\n',Employee.__dict__)
+print(dev_1.pay)
+dev_1.apply_raise()
+print(dev_1.pay)
 
 print("\n")
 
-print(Employee.raise_amount)
-print(emp1.raise_amount)
-print(emp2.raise_amount)
+print(dev_1.prog_lang)
+print(dev_2.prog_lang)
+
 print("\n")
 
-emp1.raise_amount = 1.10
+mgr_1 = Manager("Sue", "Smith", 120000, [dev_1])
 
-print(Employee.raise_amount)
-print(emp1.raise_amount)
-print(emp2.raise_amount)
-print("\n")
+print(mgr_1.email)
+mgr_1.print_emp()
 
-Employee.raise_amount = 1.05
+mgr_1.add_emp(dev_2)
 
-print(Employee.raise_amount)
-print(emp1.raise_amount)# the raise_amount remained 1.10 for this as it was changed after initializing the object it is somewhat like over writing that
-#it has been changed in its name space to 1.1
-
-print(emp2.raise_amount) # it was changed to 1.05 and its inheriting the same value that is the Employee.raise_amount 
-print("\n")
-print(Employee.num_of_emp) # incremented 3 times by now
-
-# there are both class variables and class methods
-# and static methods and static variables
+print(mgr_1.email)
+mgr_1.print_emp()
 
 
-Employee.set_raise_amt(1.04)
+mgr_1.remove_emp(dev_1)
 
-print(Employee.raise_amount)
-print(emp1.raise_amount)
-print(emp2.raise_amount)
-print("\n")
+print(mgr_1.email)
+mgr_1.print_emp()
 
+# isinstance() is a builtin function which tells if, object is an instance of the particular class, if a super class is checked with an instance of a subclass then it will return True as well e.g. print(isinstance(mgr_1, Employee))
 
-emp = "John-Doe-70000"
-new_from_string = Employee.make_object_from_string(emp)
-Employee.print_vals(new_from_string)
+print(isinstance(mgr_1, Manager))
+print(isinstance(mgr_1, Developer))
+print(isinstance(mgr_1, Employee))
 
-# datetime.date makes a date object from this function
+# issubclass() tells if a class is a subclass of that particular class
 
-dated = datetime.date(2024, 2, 25)
-
-print(Employee.is_workday(dated))
+print(issubclass(Manager, Employee))# Manager is a subclass of Employee
+print(issubclass(Manager, Developer))# Manager is not a subclass of Developer
+print(issubclass(Employee, Employee)) # this will return True subclass of itself
+print(issubclass(Employee, Manager)) # Employee is not a subclass of Manager
 
