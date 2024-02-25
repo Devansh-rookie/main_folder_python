@@ -57,6 +57,17 @@ class Employee:
         if day.weekday()== 5 or day.weekday()==6:
             return False
         return True
+    # these 2 functions would change how our class is printed/ represented
+    def __repr__(self): # more like how a programmer would read
+        return "Employee({},{},{})".format(self.first, self.last, self.pay)
+    
+    def __str__(self): # more like how user would read
+        return "{} - {}".format(self.fullname(), self.pay)
+
+    def __add__(self,other):# this will define the method to add 2 classes together which in our we would define as sum of the the 2 employee's pay, I think that should also work with subclasses let's see, it doesn't as it turns it into an integer
+        return self.pay+other.pay
+    def __len__(self):
+        return len(self.fullname())
 
 
 # here the class developer is inheriting all the methods and functionalities from the class Employee just put the class from which you want to inherit from in the bracket then use it as a normal class
@@ -153,3 +164,40 @@ print(issubclass(Manager, Developer))# Manager is not a subclass of Developer
 print(issubclass(Employee, Employee)) # this will return True subclass of itself
 print(issubclass(Employee, Manager)) # Employee is not a subclass of Manager
 
+# the name of the double underscore and function name is dunder, __init__ is called dunder init, its a special/ magic method a few common ones are repr and str repr is the representation of the class that is meant to be seen by other developers and str is the representation that is meant to be seen by the user
+
+# first make the __repr__ method as if the class doesn't have a str method and the method is called anyways then repr is used as a fallback method, i.e. repr would be called instead of showing an error
+
+# in repr we are showing how to recreate the object that is the creator this would change the print value of the object, that is instead of giving the memory address and so on it would give the value returned in repr
+
+# str would be default if defined
+
+print("\n")
+emp_1= Employee("Corey","Schafer", 50000)
+emp_2= Employee("ABC","123", 60000)
+# if str is not defined and print is used repr would be called automatically
+print(emp_1)
+print(repr(emp_1))
+print(str(emp_1))
+# or
+# same thing
+print(emp_1.__repr__())
+print(emp_1.__str__())
+
+# all of these classes have different add methods we can also make one for our class
+
+print(1+2)
+print(int.__add__(1,2))
+print(str.__add__("1","@"))
+
+print(emp_1+emp_2)
+
+# print(emp_1+emp_2 +dev_1) # error
+
+print(len("test"))
+# this also uses a dunder method
+print("test".__len__())
+
+print(len(emp_1))
+
+# return NotImplented to reduce error
