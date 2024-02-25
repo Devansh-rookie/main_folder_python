@@ -6,7 +6,8 @@ class Employee:
 
     # regular class methods automatically take self as the first argument we call it self by convention
 
-
+    # regular methods/functions take self as the argument automatically and class methods automatically take the class as it and in the meanwhile static methods don't take any of them
+    
     def __init__(self, fname, lname, pay):
         # here self means while initializing the classes emp1= Employee("Name","Last Name", 50000) self automatically does it
         self.first = fname
@@ -34,6 +35,7 @@ class Employee:
     def print_vals(self):
         print(self.fullname(), self. email, self.pay, sep="\n")
     @classmethod
+    # this @ symbol and the thing typed is a decorator
     #this is a class method which takes the first argument as the class itself, by convention we usually take cls as that argument
     def set_raise_amt(cls, amount):
         cls.raise_amount= amount
