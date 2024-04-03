@@ -3,7 +3,9 @@ from tkinter import *
 window = Tk()
 
 def convert():
-    print(entryInt.get())
+    miles = (entryInt.get())
+    kms = miles * 1.61
+    output_variable.set(f"Output: {kms} Kilometers")
 window.title("Learning GUIs")
 window.geometry("400x200")
 title_label = Label(master= window, text="Miles to Kilometers: ", font = "Algerian 24 bold")
@@ -25,7 +27,11 @@ input_frame.pack(pady= 20)
 
 
 # Output
-output_label = Label(master= window, text= "Output: ", font="Calibri 20")
+# textvariable can be used to update label dynamically
+output_variable = StringVar()
+
+output_label = Label(master= window, text= "Output: ", font="Calibri 20", textvariable= output_variable)
+# if we add textvariable there then the text i.e. Output: won't be visible as textvariable would overwrite it and it can be used to dynamically change the output
 output_label.pack()
 
 window.mainloop()
