@@ -8,7 +8,7 @@ def regular_polygon(turt: turtle.Turtle, n):
 
 t = turtle.Turtle()
 t.speed(0)
-n =10
+n =8
 for i in range(n):
     regular_polygon(t,n)
     t.setheading(0)

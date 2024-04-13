@@ -10,8 +10,8 @@ t = turtle.Turtle()
 t.speed(0)
 t.pensize(2)
 turtle.colormode(255)
-n=100
-m=4
+n=8
+m=8
 for i in range(n):
     t.color(random.randrange(0,256),random.randrange(0,256),random.randrange(0,256))
     regular_polygon(t,m, 150)

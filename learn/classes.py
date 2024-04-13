@@ -129,4 +129,3 @@ Employee.print_vals(new_from_string)
 dated = datetime.date(2024, 2, 25)
 
 print(Employee.is_workday(dated))
-
