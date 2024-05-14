@@ -107,6 +107,6 @@ Q.sides()
 
 print(isinstance(Q,Quad))# isinstance(myObj, class) 
 print(isinstance(Q,Triangle))
-
+print(isinstance(Q, Polygon))
 # globals() gives all the global names in the global namespace that is all the global classes and variables.
 # Similar to locals() gives all the local variables in the unction its called in or maybe even in an class that is to be checked.

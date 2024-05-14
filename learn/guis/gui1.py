@@ -29,7 +29,6 @@ input_frame.pack(pady= 20)
 # Output
 # textvariable can be used to update label dynamically
 output_variable = StringVar()
-
 output_label = Label(master= window, text= "Output: ", font="Calibri 20", textvariable= output_variable)
 # if we add textvariable there then the text i.e. Output: won't be visible as textvariable would overwrite it and it can be used to dynamically change the output
 output_label.pack()

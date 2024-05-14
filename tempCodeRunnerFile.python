@@ -1,0 +1,11 @@
+import turtle
+s=turtle.getscreen()
+t=turtle.Turtle()
+t.begin_fill()
+t.fillcolor("red")
+t.speed(100)
+for i in range(25):
+    t.circle(radius=100,steps=10)
+    t.left(15)
+t.end_fill()
+turtle.mainloop()

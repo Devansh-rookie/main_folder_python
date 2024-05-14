@@ -14,6 +14,6 @@ n=8
 m=8
 for i in range(n):
     t.color(random.randrange(0,256),random.randrange(0,256),random.randrange(0,256))
-    regular_polygon(t,m, 150)
+    regular_polygon(t,m, 100)
     t.left(360/n)
 turtle.mainloop()

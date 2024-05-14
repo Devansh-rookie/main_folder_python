@@ -1,19 +1,19 @@
 '''Question 1'''
 
-# def convertToDict(s: str):
-#     d = dict()
+def convertToDict(s: str):
+    d = dict()
 
-#     a = s.split(" ")
-#     for i in a:
-#         d[i] = len(i)
-#     return d
+    a = s.split(" ")
+    for i in a:
+        d[i] = len(i)
+    return d
 
-# s = input(" What is the sentence: ")
-# d = convertToDict(s)
-# print("The dictionary is:\n",d)
-# print("Word\tLength")
-# for i in d:
-#     print(f"{i}\t{d[i]}")
+s = input(" What is the sentence: ")
+d = convertToDict(s)
+print("The dictionary is:\n",d)
+print("Word\tLength")
+for i in d:
+    print(f"{i}\t{d[i]}")
 
 
 '''Question 2'''

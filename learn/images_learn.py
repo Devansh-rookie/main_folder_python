@@ -16,7 +16,7 @@ for f in os.listdir("./learn"):# this . means current directory
     if f.endswith(".jpg") or f.endswith(".png"):
         # print(f)
         i = Image.open("./learn/"+f)
-        file_name, file_ext = f.split(".")
+        file_name, file_ext = f.split(".")# unpacking
         # print(file_name)
         i.thumbnail(size)
         i.save("./learn/resize/{}_resized.{}".format(file_name,".png"))
