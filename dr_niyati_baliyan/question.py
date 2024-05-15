@@ -1,8 +1,9 @@
 import turtle
 
 def regularOctagon(t):
-    t.forward(100)
-    t.left(360/8)
+    for i in range(8):
+        t.forward(100)
+        t.left(360/8)
 
 t = turtle.Turtle()
 

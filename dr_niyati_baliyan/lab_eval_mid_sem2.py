@@ -11,9 +11,9 @@ def convertToDict(s: str):
 s = input(" What is the sentence: ")
 d = convertToDict(s)
 print("The dictionary is:\n",d)
-print("Word\tLength")
+print("Word\t\t\tLength")
 for i in d:
-    print(f"{i}\t{d[i]}")
+    print(f"{i}\t\t\t{d[i]}")
 
 
 '''Question 2'''
