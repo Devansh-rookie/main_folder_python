@@ -6,7 +6,7 @@ def regularOctagon(t):
         t.left(360/8)
 
 t = turtle.Turtle()
-
+t.speed(0)
 t.right(45)
 for i in range(8):
     regularOctagon(t)

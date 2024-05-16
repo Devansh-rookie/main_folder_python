@@ -88,7 +88,8 @@ b = B()
 # abc means abstract class
 # from abc import ABC, abstractmethod 
 
-class Polygon:
+class Polygon(ABC):# Structure
+    @abstractmethod
     def sides(self): # not concrete empty
         pass
 # if two parents and they have same func() then in the child which function would be called if we call super().func()

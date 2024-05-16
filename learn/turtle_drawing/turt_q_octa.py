@@ -11,7 +11,7 @@ t.speed(0)
 n =8
 for i in range(n):
     regular_polygon(t,n)
-    t.setheading(0)
-    t.left((360/n)*(i+1))
+    # t.setheading(0)
+    t.left((360/n))
 
 turtle.mainloop()
